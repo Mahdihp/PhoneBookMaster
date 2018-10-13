@@ -7,21 +7,22 @@
 
 
     <mvc:annotation-driven/>
+    <context:component-scan base-package="com.mahdi.controller"/>
+
+    <jpa:repositories base-package="com.mahdi.repository"/>
+    <context:component-scan base-package="com.mahdi.model">
+
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          id="viewResolver">
+    id="viewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <context:component-scan base-package="com.mahdi"/>
-
-    <context:exclude-filter type="annotation"
-                            expression="org.springframework.stereotype.Repository"/>
 
 
-    <jpa:repositories base-package="com.mahdi"/>
 
     <import resource="classpath:spring/application-context-db.xml"/>
-
 </beans>
