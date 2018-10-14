@@ -22,7 +22,7 @@
         <property name="maxIdleTime" value="30000"/>
     </bean>
 
-    <!--<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">-->
+    <!--<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" roleId="dataSource">-->
     <!--<property name="username" value="root"/>-->
     <!--<property name="password" value="toor"/>-->
     <!--<property name="url" value=""/>-->
@@ -38,7 +38,8 @@
                 <prop key="hibernate.jdbc.lob.non_contextual_creation">true</prop>
                 <prop key="hibernate.id.new_generator_mappings">true</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">none</prop>
+                <prop key="format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
             </props>
         </property>
         <property name="packagesToScan">
