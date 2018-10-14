@@ -27,4 +27,13 @@ public class Contact implements Serializable {
 
     public Contact() {
     }
+
+    public Contact(User user, String firstName, String lastName, String homePhone, String mobile, String email) {
+        this.user = user;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.homePhone = homePhone;
+        this.mobile = mobile;
+        this.email = email;
+    }
 }

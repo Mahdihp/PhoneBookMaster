@@ -22,4 +22,9 @@ public class Privilege implements Serializable {
 
     public Privilege() {
     }
+
+    public Privilege(String name, Set<Role> roles) {
+        this.name = name;
+        this.roles = roles;
+    }
 }

@@ -30,7 +30,12 @@ public class User implements Serializable {
     public User() {
     }
 
-
-
+    public User(Role role, Set<Contact> contacts, String username, String password, String displayname) {
+        this.role = role;
+        this.contacts = contacts;
+        this.username = username;
+        this.password = password;
+        this.displayname = displayname;
+    }
 }
 
