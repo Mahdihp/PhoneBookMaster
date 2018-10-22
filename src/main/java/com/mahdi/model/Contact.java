@@ -15,9 +15,9 @@ public class Contact implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long contactId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", nullable = false)
-    private User user;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "userId", nullable = false)
+//    private User user;
 
     private String firstName;
     private String lastName;
@@ -28,8 +28,7 @@ public class Contact implements Serializable {
     public Contact() {
     }
 
-    public Contact(User user, String firstName, String lastName, String homePhone, String mobile, String email) {
-        this.user = user;
+    public Contact(String firstName, String lastName, String homePhone, String mobile, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.homePhone = homePhone;

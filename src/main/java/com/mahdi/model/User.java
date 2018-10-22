@@ -20,8 +20,8 @@ public class User implements Serializable {
     @JoinColumn(name = "roleId", nullable = false)
     private Role role;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private Set<Contact> contacts;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+//    private Set<Contact> contacts;
 
     private String username;
     private String password;
@@ -35,9 +35,8 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public User(Role role, Set<Contact> contacts, String username, String password, String displayname) {
+    public User(String username, String password, String displayname,Role role) {
         this.role = role;
-        this.contacts = contacts;
         this.username = username;
         this.password = password;
         this.displayname = displayname;
