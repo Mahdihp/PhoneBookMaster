@@ -32,7 +32,6 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         com.mahdi.model.User userByUsername = userRepository.findUserByUsername(s);
         List<GrantedAuthority> authorities = buildUserForAuthentication(userByUsername.getRole());
-
         return buildUserForAuthentication(userByUsername, authorities);
     }
 
