@@ -1,53 +1,40 @@
 package com.mahdi.service;
 
 
-import com.mahdi.model.Role;
+import com.mahdi.model.User;
 import com.mahdi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
-@Service("userDetailsService")
-public class UserService implements UserDetailsService {
-
-
-    private UserRepository userRepository;
+@Service
+public class UserService {
+    private final UserRepository userRepository;
 
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        com.mahdi.model.User userByUsername = userRepository.findUserByUsername(s);
-        List<GrantedAuthority> authorities = buildUserForAuthentication(userByUsername.getRole());
-        return buildUserForAuthentication(userByUsername, authorities);
+    public void save(User user){
+        this.userRepository.save(user);
     }
 
-    private User buildUserForAuthentication(com.mahdi.model.User user, List<GrantedAuthority> authorities) {
-        return new User(user.getUsername(), user.getPassword(), authorities);
+    public Optional<User> readById(Long id){
+        return this.userRepository.findById(id);
     }
 
-    private List<GrantedAuthority> buildUserForAuthentication(Role userRoles) {
-        Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
+    public void update(User user){
+        this.userRepository.save(user);
+    }
 
-        // Build user's authorities
+    public List<User> readAll(){
+        return this.userRepository.findAll();
+    }
 
-        setAuths.add(new SimpleGrantedAuthority(userRoles.getName()));
-
-        List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
-
-        return Result;
+    public void deleteById(Long id){
+        this.userRepository.deleteById(id);
     }
 }

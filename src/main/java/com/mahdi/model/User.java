@@ -1,6 +1,7 @@
 package com.mahdi.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class User implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roleId", nullable = false)
+    @JsonIgnore
     private Role role;
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
