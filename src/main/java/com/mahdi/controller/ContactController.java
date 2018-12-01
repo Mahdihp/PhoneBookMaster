@@ -1,7 +1,7 @@
 package com.mahdi.controller;
 
 
-import com.mahdi.common.Constants;
+import com.mahdi.constant.Constants;
 import com.mahdi.model.Contact;
 import com.mahdi.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.mahdi.common;
+package com.mahdi.constant;
 
 public class Constants {
 

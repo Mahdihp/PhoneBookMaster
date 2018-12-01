@@ -1,17 +1,14 @@
 package com.mahdi.controller;
 
 
-import com.mahdi.common.Constants;
+import com.mahdi.constant.Constants;
 import com.mahdi.model.User;
 import com.mahdi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import java.net.URI;
 import java.util.List;
 
 
@@ -27,6 +24,7 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+    @Secured("USER")
     @GetMapping("/home")
     public User home() {
         return new User("Mahdi", "password");
@@ -44,7 +42,7 @@ public class UserController {
         System.out.println(passWord);
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void delete(@RequestParam("userid") String userId) {
 
     }
@@ -56,6 +54,11 @@ public class UserController {
 
     @GetMapping("/user")
     public void read(@RequestParam("userid") Long userId) {
+
+    }
+
+    @PutMapping("/update")
+    public void update(){
 
     }
 

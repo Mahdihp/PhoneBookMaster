@@ -1,6 +1,7 @@
 package com.mahdi.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ public class Role implements Serializable {
     private Long roleId;
 
     @OneToMany(mappedBy = "role")
+    @EqualsAndHashCode.Exclude
     private Set<User> users;
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
